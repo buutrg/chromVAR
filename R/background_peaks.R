@@ -142,6 +142,7 @@ get_background_peaks_core <- function(object,
 
   bin_data = as.matrix(expand.grid(bins1, bins2, bins3))
 
+  print(head(bin_data))
   
   bin_dist <- euc_dist(bin_data)
   bin_p <- dnorm(bin_dist, 0, w)
