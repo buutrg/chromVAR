@@ -86,7 +86,7 @@ setMethod(getBackgroundPeaks, c(object = "SummarizedExperiment"),
                    niterations = 50, 
                    w = 0.1, 
                    bs = 50) {
-            object <- counts_check(object)
+            # object <- counts_check(object)
             get_background_peaks_core(object, bias, niterations, w, bs)
           })
 
@@ -98,7 +98,7 @@ setMethod(getBackgroundPeaks, c(object = "RangedSummarizedExperiment"),
                    niterations = 50, 
                    w = 0.1, 
                    bs = 50) {
-            object <- counts_check(object)
+            # object <- counts_check(object)
             get_background_peaks_core(object, bias, niterations, w, bs)
           })
 
