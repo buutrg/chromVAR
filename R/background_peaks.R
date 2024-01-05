@@ -119,27 +119,29 @@ get_background_peaks_core <- function(object,
                                       w = 0.1, 
                                       bs = 50) {
   
+  start = SummarizedExperiment::rowData(object)$start
+
   fragments_per_peak <- getFragmentsPerPeak(object)
   stopifnot(length(bias) == length(fragments_per_peak))
   if (min(fragments_per_peak) <= 0) 
-    stop("All peaks must have at least one fragment in one sample")
-  
+  stop("All peaks must have at least one fragment in one sample")
+
   intensity <- log10(fragments_per_peak)
-  norm_mat <- matrix(c(intensity, bias), ncol = 2, byrow = FALSE)
-  
+  norm_mat <- matrix(c(intensity, bias, start), ncol = 3, byrow = FALSE)
+
   chol_cov_mat <- chol(cov(norm_mat))
   trans_norm_mat <- t(forwardsolve(t(chol_cov_mat), t(norm_mat)))
-  
+
   # make bins
   bins1 <- seq(min(trans_norm_mat[, 1]), max(trans_norm_mat[, 1]), 
-               length.out = bs)
+              length.out = bs)
   bins2 <- seq(min(trans_norm_mat[, 2]), max(trans_norm_mat[, 2]), 
-               length.out = bs)
-  
-  bin_data <- do.call(rbind, lapply(seq_len(bs), 
-                                    function(x) matrix(c(rep(bins1[x], bs), 
-                                                         bins2), ncol = 2, 
-                                                       byrow = FALSE)))
+              length.out = bs)
+  bins3 <- seq(min(trans_norm_mat[, 3]), max(trans_norm_mat[, 3]), 
+              length.out = bs)
+
+  bin_data = as.matrix(expand.grid(bins1, bins2, bins3))
+
   
   bin_dist <- euc_dist(bin_data)
   bin_p <- dnorm(bin_dist, 0, w)
