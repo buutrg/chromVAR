@@ -454,7 +454,7 @@ compute_deviations_single <- function(peak_set,
                                       counts_mat,
                                       background_peaks,
                                       expectation = NULL,
-                                      intermediate_results = FALSE,
+                                      intermediate_results = TRUE,
                                       threshold = 1) {
 
   if (length(peak_set) == 0) {
