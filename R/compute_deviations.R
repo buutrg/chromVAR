@@ -389,6 +389,7 @@ compute_deviations_core <- function(counts_mat,
                       counts_mat = counts_mat,
                       background_peaks = background_peaks,
                       expectation = expectation)
+  str(results)
 
   z <- t(vapply(results, function(x) x[["z"]], rep(0, ncol(counts_mat))))
   dev <- t(vapply(results, function(x) x[["dev"]], rep(0, ncol(counts_mat))))
