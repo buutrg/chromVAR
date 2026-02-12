@@ -352,6 +352,7 @@ setMethod("computeDeviations", c(object = "MatrixOrmatrix",
                                     expectation)
           })
 
+#' @export
 compute_deviations_core <- function(counts_mat,
                                     peak_indices,
                                     background_peaks,
