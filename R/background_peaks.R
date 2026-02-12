@@ -83,7 +83,7 @@ setGeneric("getBackgroundPeaks",
 setMethod(getBackgroundPeaks, c(object = "SummarizedExperiment"), 
           function(object, 
                    bias = rowData(object)$bias, 
-                   niterations = 50, 
+                   niterations = 1000, 
                    w = 0.1, 
                    bs = 50) {
             object <- counts_check(object)
@@ -95,7 +95,7 @@ setMethod(getBackgroundPeaks, c(object = "SummarizedExperiment"),
 setMethod(getBackgroundPeaks, c(object = "RangedSummarizedExperiment"), 
           function(object, 
                    bias = rowRanges(object)$bias, 
-                   niterations = 50, 
+                   niterations = 1000, 
                    w = 0.1, 
                    bs = 50) {
             object <- counts_check(object)
@@ -107,7 +107,7 @@ setMethod(getBackgroundPeaks, c(object = "RangedSummarizedExperiment"),
 setMethod(getBackgroundPeaks, c(object = "MatrixOrmatrix"), 
           function(object, 
                    bias, 
-                   niterations = 50, 
+                   niterations = 1000, 
                    w = 0.1, 
                    bs = 50) {
             get_background_peaks_core(object, bias, niterations, w, bs)
@@ -115,7 +115,7 @@ setMethod(getBackgroundPeaks, c(object = "MatrixOrmatrix"),
 
 get_background_peaks_core <- function(object, 
                                       bias, 
-                                      niterations = 50, 
+                                      niterations = 1000, 
                                       w = 0.1, 
                                       bs = 50) {
   
