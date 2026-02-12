@@ -391,10 +391,9 @@ compute_deviations_core <- function(counts_mat,
                       expectation = expectation)
   str(results)
 
-  z <- t(vapply(results, function(x) x[["z"]], rep(0, ncol(counts_mat))))
-  dev <- t(vapply(results, function(x) x[["dev"]], rep(0, ncol(counts_mat))))
-
-  colnames(z) <- colnames(dev) <- sample_names
+  # z <- t(vapply(results, function(x) x[["z"]], rep(0, ncol(counts_mat))))
+  # dev <- t(vapply(results, function(x) x[["dev"]], rep(0, ncol(counts_mat))))
+  # colnames(z) <- colnames(dev) <- sample_names
 
   # rowData$fractionMatches <- vapply(results, function(x) x[["matches"]], 0)
   # rowData$fractionBackgroundOverlap <- vapply(results, 
