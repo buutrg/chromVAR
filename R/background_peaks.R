@@ -123,6 +123,8 @@ get_background_peaks_core <- function(object,
   stopifnot(length(bias) == length(fragments_per_peak))
   if (min(fragments_per_peak) <= 0) 
     stop("All peaks must have at least one fragment in one sample")
+
+  writeLines(paste("niterations:", niterations))
   
   intensity <- log10(fragments_per_peak)
   norm_mat <- matrix(c(intensity, bias), ncol = 2, byrow = FALSE)
