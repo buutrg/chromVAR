@@ -107,7 +107,7 @@ setMethod(getBackgroundPeaks, c(object = "RangedSummarizedExperiment"),
 setMethod(getBackgroundPeaks, c(object = "MatrixOrmatrix"), 
           function(object, 
                    bias, 
-                   niterations = 1000, 
+                   niterations = 50, 
                    w = 0.1, 
                    bs = 50) {
             get_background_peaks_core(object, bias, niterations, w, bs)

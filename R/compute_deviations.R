@@ -224,7 +224,7 @@ setMethod("computeExpectations", c(object = "SummarizedExperiment"),
 setMethod("computeDeviations", c(object = "SummarizedExperiment",
                                   annotations = "SummarizedExperiment"),
           function(object, annotations,
-                   background_peaks = getBackgroundPeaks(object),
+                   background_peaks = getBackgroundPeaks(object, niterations = 1000),
                    expectation = computeExpectations(object)) {
             object <- counts_check(object)
             annotations <- matches_check(annotations)
