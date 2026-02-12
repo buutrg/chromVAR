@@ -395,16 +395,17 @@ compute_deviations_core <- function(counts_mat,
 
   colnames(z) <- colnames(dev) <- sample_names
 
-  rowData$fractionMatches <- vapply(results, function(x) x[["matches"]], 0)
-  rowData$fractionBackgroundOverlap <- vapply(results, 
-                                              function(x) x[["overlap"]], 
-                                              0)
+  # rowData$fractionMatches <- vapply(results, function(x) x[["matches"]], 0)
+  # rowData$fractionBackgroundOverlap <- vapply(results, 
+  #                                             function(x) x[["overlap"]], 
+  #                                             0)
   
-  out <- SummarizedExperiment(assays = list(deviations = dev, z = z),
-                              colData = colData,
-                              rowData = rowData)
+  # out <- SummarizedExperiment(assays = list(deviations = dev, z = z),
+  #                             colData = colData,
+  #                             rowData = rowData)
 
-  return(new("chromVARDeviations", out))
+  # return(new("chromVARDeviations", out))
+  return(results)
 }
 
 
